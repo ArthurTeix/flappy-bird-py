@@ -35,6 +35,11 @@ class Bird():
         self.cont_img = 0
         self.first_img = self.IMGS[0]
 
+        def jump(self):
+            self.speed = -10.5
+            self.time = 0
+            self.heigth = self.axios_y
+
 
 class Pipe():
     pass
