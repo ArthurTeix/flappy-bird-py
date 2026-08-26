@@ -25,6 +25,16 @@ class Bird():
     SPEED_ROTATION = 20
     ANIMATION_TIME = 5
 
+    def __init__(self, axios_x, axios_y):
+        self.axios_x = axios_x
+        self.axios_y = axios_y
+        self.angle = 0
+        self.speed = 0
+        self.heigth = self.axios_y
+        self.time = 0
+        self.cont_img = 0
+        self.first_img = self.IMGS[0]
+
 
 class Pipe():
     pass
