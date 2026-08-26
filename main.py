@@ -40,6 +40,27 @@ class Bird():
             self.time = 0
             self.heigth = self.axios_y
 
+        def move(self):
+            # calculate displacement
+            self.time += 1
+            displacement = 1.5 * (self.time ** 2) + self.speed * self.time
+
+            # restrict displacement
+            if (displacement > 16):
+                displacement = 16
+            elif (displacement < 0):
+                displacement -= 2
+
+            self.axios_y += displacement
+
+            # angle of the bird
+            if (displacement < 0 or self.axios_y < (self.heigth + 50)):
+                if (self.angle < self.MAX_ROTATION):
+                        self.angle = self.MAX_ROTATION
+            else:
+                if (self.angle > -90):
+                    self.angle -= self.SPEED_ROTATION
+
 
 class Pipe():
     pass
