@@ -16,3 +16,14 @@ IMGS_BIRD = [
 
 pygame.font.init()
 FONTE_PONTOS = pygame.font.SysFont('arial', 50)
+
+class Bird():
+    pass
+
+
+class Pipe():
+    pass
+
+
+class Ground():
+    pass
