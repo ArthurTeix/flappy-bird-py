@@ -18,7 +18,12 @@ pygame.font.init()
 FONTE_PONTOS = pygame.font.SysFont('arial', 50)
 
 class Bird():
-    pass
+    IMGS = IMGS_BIRD
+
+    # rotation animation
+    MAX_ROTATION = 25
+    SPEED_ROTATION = 20
+    ANIMATION_TIME = 5
 
 
 class Pipe():
