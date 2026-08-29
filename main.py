@@ -33,7 +33,7 @@ class Bird():
         self.heigth = self.axios_y
         self.time = 0
         self.cont_img = 0
-        self.first_img = self.IMGS[0]
+        self.img = self.IMGS[0]
 
     def jump(self):
         self.speed = -10.5
@@ -61,6 +61,25 @@ class Bird():
             if (self.angle > -90):
                 self.angle -= self.SPEED_ROTATION
 
+    def draw(self):
+        # def imgs
+        self.cont_img += 1
+
+        if (self.cont_img < self.ANIMATION_TIME):
+            self.img = self.IMGS[0]
+        elif (self.cont_img < self.ANIMATION_TIME*2):
+            self.img = self.IMGS[1]
+        elif (self.cont_img < self.ANIMATION_TIME*3):
+            self.img = self.IMGS[2]
+        elif (self.cont_img < self.ANIMATION_TIME*4):
+            self.img = self.IMGS[1]
+        elif (self.cont_img < self.ANIMATION_TIME*4 + 1):
+            self.img = self.IMGS[0]
+            self.cont_img = 0
+
+        # bird in freefall
+        
+        # draw img
 
 class Pipe():
     pass
