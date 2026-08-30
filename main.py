@@ -78,7 +78,9 @@ class Bird():
             self.cont_img = 0
 
         # bird in freefall
-        
+        if (self.angle < -80):
+            self.img = self.IMGS[1]
+            self.cont_img = self.ANIMATION_TIME * 2
         # draw img
 
 class Pipe():
