@@ -93,7 +93,14 @@ class Bird():
         pygame.mask.from_surface(self.img)
 
 class Pipe():
-    pass
+    DISTANCE = 200
+    SPEED = 5
+
+    def __init__(self, axios_x):
+        self.axios_x = axios_x
+        self.heigth = 0
+        self.pos_top = 0
+        self.pos_base = 0
 
 
 class Ground():
