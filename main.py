@@ -61,7 +61,7 @@ class Bird():
             if (self.angle > -90):
                 self.angle -= self.SPEED_ROTATION
 
-    def draw(self):
+    def draw(self, screen):
         # def imgs
         self.cont_img += 1
 
@@ -81,7 +81,13 @@ class Bird():
         if (self.angle < -80):
             self.img = self.IMGS[1]
             self.cont_img = self.ANIMATION_TIME * 2
+        
         # draw img
+        img_rotated = pygame.transform.rotate(self.img, self.angle)
+        pos_center_img = self.img.get_rect(topleft=(self.axios_x, self.axios_y)).center
+        rectangle = img_rotated.get_rect(center=pos_center_img)
+
+        screen.blit(img_rotated, rectangle.topleft)
 
 class Pipe():
     pass
