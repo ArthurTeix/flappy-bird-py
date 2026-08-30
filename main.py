@@ -1,5 +1,5 @@
 import pygame
-import random
+from random import randint
 import os 
 
 SCREEN_WIDTH = 500
@@ -105,6 +105,11 @@ class Pipe():
         self.img_pipe_top = pygame.transform.flip(IMG_PIPE, False, True)
         self.passed = False
         self.defined_heigth()
+
+    def defined_heigth(self):
+        self.heigth = randint(50, 400)
+        self.pos_top = self.heigth - self.img_pipe_top.get_height()
+        self.pos_base = self.heigth + self.DISTANCE
 
 
 class Ground():
