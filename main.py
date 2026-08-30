@@ -89,6 +89,9 @@ class Bird():
 
         screen.blit(img_rotated, rectangle.topleft)
 
+    def get_mask(self):
+        pygame.mask.from_surface(self.img)
+
 class Pipe():
     pass
 
