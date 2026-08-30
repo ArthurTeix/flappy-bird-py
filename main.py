@@ -101,6 +101,10 @@ class Pipe():
         self.heigth = 0
         self.pos_top = 0
         self.pos_base = 0
+        self.img_pipe_ground = IMG_PIPE
+        self.img_pipe_top = pygame.transform.flip(IMG_PIPE, False, True)
+        self.passed = False
+        self.defined_heigth()
 
 
 class Ground():
