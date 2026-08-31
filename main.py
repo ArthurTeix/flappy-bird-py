@@ -111,6 +111,9 @@ class Pipe():
         self.pos_top = self.heigth - self.img_pipe_top.get_height()
         self.pos_base = self.heigth + self.DISTANCE
 
+    def move(self):
+        self.axios_x -= self.SPEED
+
 
 class Ground():
     pass
