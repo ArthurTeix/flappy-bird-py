@@ -126,6 +126,14 @@ class Pipe():
         distance_top = (self.axios_x - bird.axios_x, self.pos_top - round(bird.axios_y))
         distance_base = (self.axios_x - bird.axios_x, self.pos_base - round(bird.axios_y))
 
+        top_colide = bird_mask.overlap(top_mask, distance_top)
+        base_colide = bird_mask.overlap(base_mask, distance_base)
+
+        if (top_colide or base_colide):
+            return True
+        else:
+            return False
+
 
 class Ground():
     pass
