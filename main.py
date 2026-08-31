@@ -153,3 +153,7 @@ class Ground():
             self.ground1 += self.WIDTH
         elif (self.ground2 + self.WIDTH < 0):
             self.ground2 += self.WIDTH
+
+    def draw(self, screen):
+        screen.blit(self.IMG, (self.ground1, self.axios_y))
+        screen.blit(self.IMG, (self.ground2, self.axios_y))
