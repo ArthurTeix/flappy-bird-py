@@ -123,6 +123,9 @@ class Pipe():
         top_mask = pygame.mask.from_surface(self.img_pipe_top)
         base_mask = pygame.mask.from_surface(self.img_pipe_ground)
 
+        distance_top = (self.axios_x - bird.axios_x, self.pos_top - round(bird.axios_y))
+        distance_base = (self.axios_x - bird.axios_x, self.pos_base - round(bird.axios_y))
+
 
 class Ground():
     pass
