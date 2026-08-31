@@ -142,6 +142,14 @@ class Ground():
 
     def __init__(self, axios_y):
         self.axios_y = axios_y
-        self.x0 = 0
-        self.x1 = self.WIDTH
-        
+        self.ground1 = 0
+        self.ground2 = self.WIDTH
+
+    def move(self):
+        self.ground1 -= self.SPEED
+        self.ground2 -= self.SPEED
+
+        if (self.ground1 + self.WIDTH < 0):
+            self.ground1 += self.WIDTH
+        elif (self.ground2 + self.WIDTH < 0):
+            self.ground2 += self.WIDTH
