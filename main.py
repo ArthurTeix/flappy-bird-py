@@ -114,6 +114,10 @@ class Pipe():
     def move(self):
         self.axios_x -= self.SPEED
 
+    def draw(self, screen):
+        screen.blit(self.img_pipe_top, (self.axios_x, self.pos_top))
+        screen.blit(self.img_pipe_ground, (self.axios_x, self.pos_base))
+
 
 class Ground():
     pass
