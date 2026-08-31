@@ -118,6 +118,11 @@ class Pipe():
         screen.blit(self.img_pipe_top, (self.axios_x, self.pos_top))
         screen.blit(self.img_pipe_ground, (self.axios_x, self.pos_base))
 
+    def colide(self, bird):
+        bird_mask = bird.get_mask()
+        top_mask = pygame.mask.from_surface(self.img_pipe_top)
+        base_mask = pygame.mask.from_surface(self.img_pipe_ground)
+
 
 class Ground():
     pass
