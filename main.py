@@ -136,4 +136,12 @@ class Pipe():
 
 
 class Ground():
-    pass
+    SPEED = 5
+    WIDTH = IMG_GROUND.get_width()
+    IMG = IMG_GROUND
+
+    def __init__(self, axios_y):
+        self.axios_y = axios_y
+        self.x0 = 0
+        self.x1 = self.WIDTH
+        
