@@ -157,3 +157,12 @@ class Ground():
     def draw(self, screen):
         screen.blit(self.IMG, (self.ground1, self.axios_y))
         screen.blit(self.IMG, (self.ground2, self.axios_y))
+
+
+def draw_screen(screen, bird, pipes, ground, score):
+    screen.blit(IMG_BACKGROUND, (0, 0))
+    bird.draw(screen)
+    for pipe in pipes:
+        pipe.draw(screen)
+
+    text = FONT_SCORE
