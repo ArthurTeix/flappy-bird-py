@@ -165,4 +165,5 @@ def draw_screen(screen, bird, pipes, ground, score):
     for pipe in pipes:
         pipe.draw(screen)
 
-    text = FONT_SCORE
+    text = FONT_SCORE.render(f"Score: {score}", 1, (255, 255, 255))
+    screen.blit(text, (SCREEN_WIDTH - 10 - text.get_width(), 10))
