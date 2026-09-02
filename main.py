@@ -159,10 +159,11 @@ class Ground():
         screen.blit(self.IMG, (self.ground2, self.axios_y))
 
 
-def draw_screen(screen, bird, pipes, ground, score):
+def draw_screen(screen, birds, pipes, ground, score):
     screen.blit(IMG_BACKGROUND, (0, 0))
 
-    bird.draw(screen)
+    for bird in birds:
+        bird.draw(screen)
     
     for pipe in pipes:
         pipe.draw(screen)
@@ -176,7 +177,7 @@ def draw_screen(screen, bird, pipes, ground, score):
 
 
 def main():
-    bird = Bird(230, 350)
+    birds = [Bird(230, 350)]
     ground = Ground(730)
     pipes = [Pipe(700)]
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -195,7 +196,8 @@ def main():
 
             if (event.type == pygame.KEYDOWN):
                 if (event.key == pygame.K_SPACE):
-                    bird.jump()
+                    for bird in birds:
+                        bird.jump()
 
         # move elements
         bird.move()
