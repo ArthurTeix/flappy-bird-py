@@ -200,7 +200,8 @@ def main():
                         bird.jump()
 
         # move elements
-        bird.move()
+        for bird in birds:
+            bird.move()
         ground.move()
 
         add_pipe = False
@@ -225,4 +226,12 @@ def main():
         for pipe in removed_pipe:
             pipes.remove(pipe)
 
+        for i, bird in enumerate(birds):
+            if (bird.axios_y + bird.img.get_height() > 730) or (bird.axios_y < 0):
+                birds.pop(i)
+
         draw_screen(screen, bird, pipes, ground, score)
+
+
+if __name__ == '__main__':
+    main()
