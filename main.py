@@ -218,5 +218,9 @@ def main():
             if (pipe.axios_x + pipe.img_pipe_top.get_width() < 0):
                 removed_pipe.append(pipe)
 
+        if add_pipe:
+            score += 1
+            pipes.append(Pipe(600))
+
 
         draw_screen(screen, bird, pipes, ground, score)
