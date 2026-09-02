@@ -185,4 +185,17 @@ def main():
 
     end_game = False
     while not end_game:
+        watch.tick(30) # fps
+
+        for event in pygame.event.get():
+            if (event.type == pygame.QUIT):
+                end_game = True
+                pygame.quit()
+                quit()
+
+            if (event.type == pygame.KEYDOWN):
+                if (event.key == pygame.K_SPACE):
+                    bird.jump()
+
+
         draw_screen(screen, bird, pipes, ground, score)
