@@ -210,7 +210,8 @@ def main():
             for i, bird in enumerate(birds):
                 if (pipe.colide(bird)):
                     birds.pop(i)
-                    pygame.quit(    )
+                    pygame.quit()
+                    quit()
 
                 if (not pipe.passed and bird.axios_x > pipe.axios_x):
                     pipe.passed = True
@@ -230,6 +231,9 @@ def main():
         for i, bird in enumerate(birds):
             if (bird.axios_y + bird.img.get_height() > 730) or (bird.axios_y < 0):
                 birds.pop(i)
+                pygame.quit()
+                quit()
+                
 
         draw_screen(screen, birds, pipes, ground, score)
 
