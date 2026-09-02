@@ -90,7 +90,7 @@ class Bird():
         screen.blit(img_rotated, rectangle.topleft)
 
     def get_mask(self):
-        pygame.mask.from_surface(self.img)
+        return pygame.mask.from_surface(self.img)
 
 class Pipe():
     DISTANCE = 200
@@ -123,8 +123,8 @@ class Pipe():
         top_mask = pygame.mask.from_surface(self.img_pipe_top)
         base_mask = pygame.mask.from_surface(self.img_pipe_ground)
 
-        distance_top = (self.axios_x - bird.axios_x, self.pos_top - round(bird.axios_y))
-        distance_base = (self.axios_x - bird.axios_x, self.pos_base - round(bird.axios_y))
+        distance_top = (self.axios_x - bird.axios_x, self.pos_top - round(bird.axios_y) + 5)
+        distance_base = (self.axios_x - bird.axios_x, self.pos_base - round(bird.axios_y) + 5)
 
         top_colide = bird_mask.overlap(top_mask, distance_top)
         base_colide = bird_mask.overlap(base_mask, distance_base)
@@ -150,9 +150,9 @@ class Ground():
         self.ground2 -= self.SPEED
 
         if (self.ground1 + self.WIDTH < 0):
-            self.ground1 += self.WIDTH
+            self.ground1 = self.ground2 + self.WIDTH
         elif (self.ground2 + self.WIDTH < 0):
-            self.ground2 += self.WIDTH
+            self.ground2 = self.ground1 + self.WIDTH
 
     def draw(self, screen):
         screen.blit(self.IMG, (self.ground1, self.axios_y))
@@ -168,7 +168,7 @@ def draw_screen(screen, birds, pipes, ground, score):
     for pipe in pipes:
         pipe.draw(screen)
 
-    text = FONT_SCORE.render(f"Score: {score}", 1, (255, 255, 255))
+    text = FONT_SCORE.render(f"Score: {score}", 1, (255, 255, 0))
     screen.blit(text, (SCREEN_WIDTH - 10 - text.get_width(), 10))
 
     ground.draw(screen)
@@ -210,6 +210,7 @@ def main():
             for i, bird in enumerate(birds):
                 if (pipe.colide(bird)):
                     birds.pop(i)
+                    pygame.quit(    )
 
                 if (not pipe.passed and bird.axios_x > pipe.axios_x):
                     pipe.passed = True
@@ -230,7 +231,7 @@ def main():
             if (bird.axios_y + bird.img.get_height() > 730) or (bird.axios_y < 0):
                 birds.pop(i)
 
-        draw_screen(screen, bird, pipes, ground, score)
+        draw_screen(screen, birds, pipes, ground, score)
 
 
 if __name__ == '__main__':
