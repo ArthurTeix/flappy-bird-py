@@ -173,3 +173,13 @@ def draw_screen(screen, bird, pipes, ground, score):
     ground.draw(screen)
 
     pygame.display.update()
+
+
+def main():
+    bird = Bird(230, 350)
+    ground = Ground(730)
+    pipes = [Pipe(700)]
+
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    score = 0
