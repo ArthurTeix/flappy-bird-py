@@ -203,5 +203,20 @@ def main():
         bird.move()
         ground.move()
 
+        add_pipe = False
+        removed_pipe = []
+        for pipe in pipes:
+            for i, bird in enumerate(birds):
+                if (pipe.colide(bird)):
+                    birds.pop(i)
+
+                if (not pipe.passed and bird.axios_x > pipe.axios_x):
+                    pipe.passed = True
+                    add_pipe = True
+
+            pipe.move()
+            if (pipe.axios_x + pipe.img_pipe_top.get_width() < 0):
+                removed_pipe.append(pipe)
+
 
         draw_screen(screen, bird, pipes, ground, score)
