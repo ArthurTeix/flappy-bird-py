@@ -222,5 +222,7 @@ def main():
             score += 1
             pipes.append(Pipe(600))
 
+        for pipe in removed_pipe:
+            pipes.remove(pipe)
 
         draw_screen(screen, bird, pipes, ground, score)
