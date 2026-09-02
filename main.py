@@ -197,5 +197,9 @@ def main():
                 if (event.key == pygame.K_SPACE):
                     bird.jump()
 
+        # move elements
+        bird.move()
+        ground.move()
+
 
         draw_screen(screen, bird, pipes, ground, score)
