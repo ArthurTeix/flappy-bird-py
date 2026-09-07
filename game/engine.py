@@ -2,6 +2,7 @@ import pygame
 
 from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE
 from game.elements import Bird, Pipe, Ground
+from game.ui.button import Button
 from game.rendering import draw_screen
 
 
@@ -19,16 +20,17 @@ class Engine:
         self.pipes = [Pipe(700)]
         self.score = 0
 
+        self.botao_start = Button('./imgs/button/start_btn.png', (250, 250))
+        self.botao_exit = Button('./imgs/button/exit_btn.png', (250, 550))
+        self.state = "menu"
+
         self.running = True
 
     def run(self):
         while self.running:
             self.watch.tick(self.FPS)
 
-            self.handle_events()
-            self.update()
-
-            draw_screen(self.screen, self.birds, self.pipes, self.ground, self.score)
+            
 
     # events
     def handle_events(self):
@@ -40,6 +42,8 @@ class Engine:
                 if event.key == pygame.K_SPACE:
                     for bird in self.birds:
                         bird.jump()
+
+            
 
     # per-frame update
     def update(self):
