@@ -43,7 +43,12 @@ class Engine:
                     for bird in self.birds:
                         bird.jump()
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.state == "menu" and self.botao_start.clicked(event.pos):
+                    self.state = "jogo"
             
+                elif self.state == "menu" and self.botao_exit.clicked(event.pos):
+                    self.running = False
 
     # per-frame update
     def update(self):
