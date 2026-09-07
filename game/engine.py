@@ -3,7 +3,7 @@ import pygame
 from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE
 from game.elements import Bird, Pipe, Ground
 from game.ui.button import Button
-from game.rendering import draw_screen
+from game.rendering import draw_game
 from game.database.db import create_table, save_score
 
 
@@ -45,7 +45,7 @@ class Engine:
 
             elif self.state == "play":
                 self.update()
-                draw_screen(self.screen, self.birds, self.pipes, self.ground, self.score)
+                draw_game(self.screen, self.birds, self.pipes, self.ground, self.score)
 
             elif self.state == "game_over":
                 self.screen.fill((50, 150, 200))

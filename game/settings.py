@@ -17,7 +17,7 @@ pygame.font.init()
 # used imgs 
 IMG_PIPE = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'pipe.png')))
 IMG_GROUND = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'ground.png')))
-IMG_BACKGROUND = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bg.png')))
+IMG_BACKGROUND = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bg_game.png')))
 IMGS_BIRD = [
     pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bird1.png'))),
     pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bird2.png'))),

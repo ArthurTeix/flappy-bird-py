@@ -1,7 +1,7 @@
 from game.settings import IMG_BACKGROUND, FONT_SCORE, SCREEN_WIDTH
 import pygame
 
-def draw_screen(screen, birds, pipes, ground, score):
+def draw_game(screen, birds, pipes, ground, score):
     screen.blit(IMG_BACKGROUND, (0, 0))
 
     for bird in birds:
@@ -16,3 +16,7 @@ def draw_screen(screen, birds, pipes, ground, score):
     ground.draw(screen)
 
     pygame.display.update()
+
+
+def draw_rank(screen, text, top5):
+    pass
