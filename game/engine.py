@@ -31,7 +31,7 @@ class Engine:
             self.watch.tick(self.FPS)
 
             self.handle_events()
-            
+
             if self.state == "menu":
                 self.screen.fill((50, 150, 200))
                 self.botao_start.draw(self.screen)
@@ -55,7 +55,7 @@ class Engine:
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.state == "menu" and self.botao_start.clicked(event.pos):
-                    self.state = "jogo"
+                    self.state = "play"
             
                 elif self.state == "menu" and self.botao_exit.clicked(event.pos):
                     self.running = False
