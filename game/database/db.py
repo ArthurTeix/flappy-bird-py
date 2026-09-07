@@ -1,5 +1,6 @@
 import sqlite3
 
+
 def create_table():
     connection = sqlite3.connect('./game/database/rank.db')
     cursor = connection.cursor()
@@ -10,6 +11,16 @@ def create_table():
         score INTEGER NOT NULL
     )
     """)
+
+    connection.commit()
+    connection.close()
+
+
+def save_score(score):
+    connection = sqlite3.connect('./game/database/rank.db')
+    cursor = connection.cursor()
+
+    cursor.execute("INSERT INTO partidas (score) VALUES (?)", (score,)) # Os ? garantem que o sqlite3 trata o valor como dado, nunca como código SQL
 
     connection.commit()
     connection.close()
