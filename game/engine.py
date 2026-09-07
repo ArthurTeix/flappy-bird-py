@@ -30,7 +30,17 @@ class Engine:
         while self.running:
             self.watch.tick(self.FPS)
 
+            self.handle_events()
             
+            if self.state == "menu":
+                self.screen.fill((50, 150, 200))
+                self.botao_start.draw(self.screen)
+                self.botao_exit.draw(self.screen)
+                pygame.display.update()
+            else:
+                self.update()
+                
+                draw_screen(self.screen, self.birds, self.pipes, self.ground, self.score)
 
     # events
     def handle_events(self):
