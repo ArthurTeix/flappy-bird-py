@@ -15,15 +15,13 @@ class Engine:
         pygame.display.set_caption(GAME_TITLE)
         self.watch = pygame.time.Clock()
 
-        self.birds = [Bird(230, 350)]
-        self.ground = Ground(self.GROUND_Y)
-        self.pipes = [Pipe(700)]
-        self.score = 0
+        self.reset_game()
 
         self.button_start = Button('./imgs/button/start_btn.png', (250, 250))
         self.button_exit = Button('./imgs/button/exit_btn.png', (250, 550))
-        self.button_retry = Button('./imgs/button/retry_btn.png', (250, 550))
-        self.button_menu = Button('./imgs/button/menu_btn.png', (250, 550))
+        self.button_retry = Button('./imgs/button/retry_btn.png', (250, 250))
+        self.button_menu = Button('./imgs/button/menu_btn.png', (250, 400))
+
         self.state = "menu"
 
         self.running = True
@@ -39,10 +37,12 @@ class Engine:
                 self.button_start.draw(self.screen)
                 self.button_exit.draw(self.screen)
                 pygame.display.update()
-            else:
+
+            elif self.state == "play":
                 self.update()
-                
                 draw_screen(self.screen, self.birds, self.pipes, self.ground, self.score)
+
+            
 
     # events
     def handle_events(self):
@@ -50,15 +50,15 @@ class Engine:
             if event.type == pygame.QUIT:
                 self.quit_game()
 
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN and self.state == "play":
                 if event.key == pygame.K_SPACE:
                     for bird in self.birds:
                         bird.jump()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.state == "menu" and self.button_start.clicked(event.pos):
+                    self.reset_game()
                     self.state = "play"
-            
                 elif self.state == "menu" and self.button_exit.clicked(event.pos):
                     self.running = False
 
@@ -103,6 +103,8 @@ class Engine:
             if (bird.axios_y + bird.img.get_height() > self.GROUND_Y) or (bird.axios_y < 0):
                 self.birds.pop(i)
                 self.state = "game_over"
+
+    
 
     # final
     def quit_game(self):
