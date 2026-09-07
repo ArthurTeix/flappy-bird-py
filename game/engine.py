@@ -21,6 +21,7 @@ class Engine:
         create_table()
 
         self.button_start = Button('./imgs/button/start_btn.png', (250, 250))
+        self.button_rank = Button('./imgs/button/rank_btn.png', (250, 400))
         self.button_exit = Button('./imgs/button/exit_btn.png', (250, 550))
         self.button_retry = Button('./imgs/button/retry_btn.png', (250, 250))
         self.button_menu = Button('./imgs/button/menu_btn.png', (250, 400))
@@ -38,6 +39,7 @@ class Engine:
             if self.state == "menu":
                 self.screen.fill((50, 150, 200))
                 self.button_start.draw(self.screen)
+                self.button_rank.draw(self.screen)
                 self.button_exit.draw(self.screen)
                 pygame.display.update()
 
@@ -51,6 +53,9 @@ class Engine:
                 self.button_menu.draw(self.screen)
                 self.button_exit.draw(self.screen)
                 pygame.display.update()
+
+            elif self.state == "rank":
+                pass
 
 
     # events
@@ -70,6 +75,8 @@ class Engine:
                     self.state = "play"
                 elif self.state == "menu" and self.button_exit.clicked(event.pos):
                     self.running = False
+                elif self.state == "menu" and self.button_rank.clicked(event.pos):
+                    self.state = "rank"
 
                 if self.state == "game_over" and self.button_retry.clicked(event.pos):
                     self.reset_game()
