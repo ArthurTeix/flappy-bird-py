@@ -25,6 +25,8 @@ class Engine:
         self.button_exit = Button('./imgs/button/exit_btn.png', (250, 550))
         self.button_retry = Button('./imgs/button/retry_btn.png', (250, 250))
         self.button_menu = Button('./imgs/button/menu_btn.png', (250, 400))
+        self.button_menu_rank = Button('./imgs/button/menu_btn.png', (130, 720))
+        self.button_exit_rank = Button('./imgs/button/exit_btn.png', (370, 720))
 
         self.state = "menu"
 
@@ -57,6 +59,10 @@ class Engine:
             elif self.state == "rank":
                 top5 = get_top5_score()
                 draw_rank(self.screen, top5)
+                self.button_menu_rank.draw(self.screen)
+                self.button_exit_rank.draw(self.screen)
+
+                pygame.display.update()
 
 
     # events
@@ -85,6 +91,11 @@ class Engine:
                 elif self.state == "game_over" and self.button_menu.clicked(event.pos):
                     self.state = "menu"
                 elif self.state == "game_over" and self.button_exit.clicked(event.pos):
+                    self.running = False
+
+                if self.state == "rank" and self.button_menu_rank.clicked(event.pos):
+                    self.state = "menu"
+                elif self.state == "rank" and self.button_exit_rank.clicked(event.pos):
                     self.running = False
 
     # per-frame update

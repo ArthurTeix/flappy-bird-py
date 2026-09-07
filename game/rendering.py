@@ -32,5 +32,3 @@ def draw_rank(screen, top5):
         rank = FONT_RANK.render(f"{ranked}º - {score}", 1, (0, 0, 0))
         rect_rank_text = rank.get_rect(center=(SCREEN_WIDTH // 2, (axios_y + (gap * ranked))))
         screen.blit(rank, rect_rank_text)
-
-    pygame.display.update()
