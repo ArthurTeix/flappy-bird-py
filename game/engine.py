@@ -104,7 +104,11 @@ class Engine:
                 self.birds.pop(i)
                 self.state = "game_over"
 
-    
+    def reset_game(self):
+        self.birds = [Bird(230, 350)]
+        self.ground = Ground(self.GROUND_Y)
+        self.pipes = [Pipe(700)]
+        self.score = 0
 
     # final
     def quit_game(self):
