@@ -68,6 +68,14 @@ class Engine:
                 elif self.state == "menu" and self.button_exit.clicked(event.pos):
                     self.running = False
 
+                if self.state == "game_over" and self.button_retry.clicked(event.pos):
+                    self.reset_game()
+                    self.state = "play"
+                elif self.state == "game_over" and self.button_menu.clicked(event.pos):
+                    self.state = "menu"
+                elif self.state == "game_over" and self.button_exit.clicked(event.pos):
+                    self.running = False
+
     # per-frame update
     def update(self):
         self.move_elements()
