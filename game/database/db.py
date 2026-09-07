@@ -20,7 +20,7 @@ def save_score(score):
     connection = sqlite3.connect('./game/database/rank.db')
     cursor = connection.cursor()
 
-    cursor.execute("INSERT INTO partidas (score) VALUES (?)", (score,)) # Os ? garantem que o sqlite3 trata o valor como dado, nunca como código SQL
+    cursor.execute("INSERT INTO matches (score) VALUES (?)", (score,)) # Os ? garantem que o sqlite3 trata o valor como dado, nunca como código SQL
 
     connection.commit()
     connection.close()

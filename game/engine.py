@@ -4,6 +4,7 @@ from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE
 from game.elements import Bird, Pipe, Ground
 from game.ui.button import Button
 from game.rendering import draw_screen
+from game.database.db import create_table, save_score
 
 
 class Engine:
@@ -16,6 +17,8 @@ class Engine:
         self.watch = pygame.time.Clock()
 
         self.reset_game()
+
+        create_table()
 
         self.button_start = Button('./imgs/button/start_btn.png', (250, 250))
         self.button_exit = Button('./imgs/button/exit_btn.png', (250, 550))
@@ -96,6 +99,7 @@ class Engine:
                 if pipe.colide(bird):
                     self.birds.pop(i)
                     self.state = "game_over"
+                    save_score(self.score)
 
                 if not pipe.passed and bird.axios_x > pipe.axios_x:
                     pipe.passed = True
@@ -117,6 +121,7 @@ class Engine:
             if (bird.axios_y + bird.img.get_height() > self.GROUND_Y) or (bird.axios_y < 0):
                 self.birds.pop(i)
                 self.state = "game_over"
+                save_score(self.score)
 
     def reset_game(self):
         self.birds = [Bird(230, 350)]
