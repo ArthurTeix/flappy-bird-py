@@ -42,7 +42,13 @@ class Engine:
                 self.update()
                 draw_screen(self.screen, self.birds, self.pipes, self.ground, self.score)
 
-            
+            elif self.state == "game_over":
+                self.screen.fill((50, 150, 200))
+                self.button_retry.draw(self.screen)
+                self.button_menu.draw(self.screen)
+                self.button_exit.draw(self.screen)
+                pygame.display.update()
+
 
     # events
     def handle_events(self):
