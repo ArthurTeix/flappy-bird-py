@@ -17,7 +17,8 @@ pygame.font.init()
 # used imgs 
 IMG_PIPE = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'pipe.png')))
 IMG_GROUND = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'ground.png')))
-IMG_BACKGROUND = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bg_game.png')))
+IMG_BACKGROUND_GAME = pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bg_game.png')))
+IMG_BACKGROUND_RANK = pygame.image.load(os.path.join(IMGS_DIR, 'bg_rank.png'))
 IMGS_BIRD = [
     pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bird1.png'))),
     pygame.transform.scale2x(pygame.image.load(os.path.join(IMGS_DIR, 'bird2.png'))),
@@ -26,3 +27,4 @@ IMGS_BIRD = [
 
 # score
 FONT_SCORE = pygame.font.SysFont('arial', 50)
+FONT_RANK = pygame.font.SysFont('dfkaisb', 50)

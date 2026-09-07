@@ -1,8 +1,8 @@
-from game.settings import IMG_BACKGROUND, FONT_SCORE, SCREEN_WIDTH
+from game.settings import IMG_BACKGROUND_GAME, IMG_BACKGROUND_RANK, FONT_SCORE, FONT_RANK, SCREEN_WIDTH
 import pygame
 
 def draw_game(screen, birds, pipes, ground, score):
-    screen.blit(IMG_BACKGROUND, (0, 0))
+    screen.blit(IMG_BACKGROUND_GAME, (0, 0))
 
     for bird in birds:
         bird.draw(screen)
@@ -18,5 +18,17 @@ def draw_game(screen, birds, pipes, ground, score):
     pygame.display.update()
 
 
-def draw_rank(screen, text, top5):
-    pass
+def draw_rank(screen, top5):
+    screen.blit(IMG_BACKGROUND_RANK, (0, 0))
+
+    text = FONT_SCORE.render("RECORDS - TOP 5", 1, (255, 255, 0))
+    rect_texto = text.get_rect(center=(SCREEN_WIDTH // 2, 310))
+    screen.blit(text, rect_texto)
+
+    axios_y = 320
+    gap = 50
+
+    for rank, score in enumerate(top5, start=1):
+        rank = FONT_RANK.render(f"{rank}º - {score}", 1, (0, 0, 0))
+        rect_rank_text = text.get_rect(center=(SCREEN_WIDTH // 2, (axios_y + (gap * rank))))
+        screen.blit(rank, rect_rank_text)
