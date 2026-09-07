@@ -3,8 +3,8 @@ import pygame
 from game.settings import SCREEN_WIDTH, SCREEN_HEIGHT, GAME_TITLE
 from game.elements import Bird, Pipe, Ground
 from game.ui.button import Button
-from game.rendering import draw_game
-from game.database.db import create_table, save_score
+from game.rendering import draw_game, draw_rank
+from game.database.db import create_table, save_score, get_top5_score
 
 
 class Engine:
@@ -55,7 +55,8 @@ class Engine:
                 pygame.display.update()
 
             elif self.state == "rank":
-                pass
+                top5 = get_top5_score()
+                draw_rank(self.screen, top5)
 
 
     # events
